@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "declaration": true
+  },
+  "include": [
+    "./scripts",
+    "./test",
+    "./typechain",
+    "types/types.ts",
+    "types/ERC20.ts",
+    "types/common.ts",
+    "types/hardhat.d.ts",
+    "types/Ownable.ts",
+    "types/index.ts",
+    "types/IERC20Metadata.ts",
+    "types/Greeter.ts",
+    "types/IERC20.ts",
+    "types/ERC20Custom.ts",
+    "types/Pausable.ts",
+    "types/ERC20Basic.ts"
+  ],
+  "files": [
+    "./hardhat.config.ts"
+  ]
+}
