@@ -7,6 +7,7 @@
     "build": "hardhat compile",
     "start": "hardhat node",
     "deploy": "hardhat run scripts/deploy.ts",
+    "console": "hardhat console --network localhost",
     "test": "hardhat test"
   },
   "keywords": [],
