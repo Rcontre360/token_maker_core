@@ -32,16 +32,11 @@ contract ERC20Custom is ERC20, Pausable, Ownable {
     ) ERC20(name, symbol) {
         _cap = cap;
         _decimals = decimals;
-        for (uint8 i = 0; i < 4; i++)
-            available[Available(i)] = availableFunctionality[i];
+        for (uint8 i = 0; i < 4; i++) available[Available(i)] = availableFunctionality[i];
         _mint(msg.sender, supply);
     }
 
-    function burn(uint256 amount)
-        public
-        onlyOwner
-        isAvailable(Available.Burnable)
-    {
+    function burn(uint256 amount) public onlyOwner isAvailable(Available.Burnable) {
         _burn(_msgSender(), amount);
     }
 
@@ -53,15 +48,9 @@ contract ERC20Custom is ERC20, Pausable, Ownable {
         return _decimals;
     }
 
-    function burnFrom(address account, uint256 amount)
-        public
-        isAvailable(Available.Burnable)
-    {
+    function burnFrom(address account, uint256 amount) public isAvailable(Available.Burnable) {
         uint256 currentAllowance = allowance(account, _msgSender());
-        require(
-            currentAllowance >= amount,
-            "ERC20: burn amount exceeds allowance"
-        );
+        require(currentAllowance >= amount, "ERC20: burn amount exceeds allowance");
         _approve(account, _msgSender(), currentAllowance - amount);
         _burn(account, amount);
     }
@@ -89,10 +78,7 @@ contract ERC20Custom is ERC20, Pausable, Ownable {
     }
 
     function _mint(address account, uint256 amount) internal override {
-        require(
-            ERC20.totalSupply() + amount <= _cap,
-            "ERC20Capped: cap exceeded"
-        );
+        require(ERC20.totalSupply() + amount <= _cap, "ERC20Capped: cap exceeded");
         super._mint(account, amount);
     }
 }
